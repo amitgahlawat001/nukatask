@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    
+    <section class="container">
+        <div class="content">
+            <h1>Step 1</h1>
+            
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 2</h1>
+           
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 3</h1>
+           
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content">
+            <h1>Step 4</h1>
+        </div>
+    </section>
+
+    <div id="set-height"></div>
+
+    <video id="v0" tabindex="0", autobuffer preload>
+        <source type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' src="nuka.mp4"></source>
+    </video>
+
+    <div class="rmwidget widget-text-v3 no-transition above-all-fade fade-in" data-id="61929961de466a003e13294d" style="left: -3.03px; top: -2.12px; width: 109px; height: 100px; z-index: 379; zoom: 0.400521;"><div class="Box-sc-n41d2v-0 TextBase___StyledBox-sc-1o28pgm-0 jBjUfz dwOvEf"><div class="text-viewer"><p style="font-family:Inter;font-weight:700;font-size:60px" class="view-mode unstyled style-589ad26e-ebaf-4734-abf3-5b35e6ffda91"><span style="color:rgba(0, 0, 0, 1)">n</span></p></div></div></div>
+
+    <div class="rmwidget widget-text-v3 no-transition above-all-fade fade-in" data-id="61929961de466a003e13294e" style="top: -0.14px; width: 109px; height: 100px; right: -0.8px; z-index: 378; zoom: 0.400521;"><div class="Box-sc-n41d2v-0 TextBase___StyledBox-sc-1o28pgm-0 gcfOkZ dwOvEf"><div class="text-viewer"><p style="font-family:Inter;font-weight:700;font-size:60px" class="view-mode unstyled style-589ad26e-ebaf-4734-abf3-5b35e6ffda91"><span style="color:rgba(0, 0, 0, 1)">u</span></p></div></div></div>
+
+    <div class="rmwidget widget-text-v3 no-transition above-all-fade fade-in" data-id="61929961de466a003e13294f" style="left: -0.03px; width: 106px; height: 100px; bottom: 6.92px; z-index: 376; zoom: 0.400521;"><div class="Box-sc-n41d2v-0 TextBase___StyledBox-sc-1o28pgm-0 jBjUfz dwOvEf"><div class="text-viewer"><p style="font-family:Inter;font-weight:700;font-size:60px" class="view-mode unstyled style-589ad26e-ebaf-4734-abf3-5b35e6ffda91"><span style="color:rgba(0, 0, 0, 1)">k</span></p></div></div></div>
+
+    <div class="rmwidget widget-text-v3 no-transition above-all-fade fade-in" data-id="61929961de466a003e13294c" style="width: 105px; height: 100px; right: -0.82px; bottom: 6.92px; z-index: 377; zoom: 0.400521;"><div class="Box-sc-n41d2v-0 TextBase___StyledBox-sc-1o28pgm-0 jBjUfz dwOvEf"><div class="text-viewer"><p style="font-family:Inter;font-weight:700;font-size:60px" class="view-mode unstyled style-713e4c6b-1645-4118-b367-addda60c7f2f">a</p></div></div></div>
+
+    
+
+    <script src="sticky.js"></script>
+    <script>
+
+        enterView({
+            selector: 'section',
+            enter: function(el) {
+                el.classList.add('entered');
+            }
+        })
+    
+        var frameNumber = 0, // start video at frame 0
+        // lower numbers = faster playback
+        playbackConst = 500, 
+        // get page height from video duration
+        setHeight = document.getElementById("set-height"), 
+        // select video element         
+        vid = document.getElementById('v0'); 
+        // var vid = $('#v0')[0]; // jquery option
+
+    // dynamically set the page height according to video length
+    vid.addEventListener('loadedmetadata', function() {
+    setHeight.style.height = Math.floor(vid.duration) * playbackConst + "px";
+    });
+
+
+    // Use requestAnimationFrame for smooth playback
+    function scrollPlay(){  
+    var frameNumber  = window.pageYOffset/playbackConst;
+    vid.currentTime  = frameNumber;
+    window.requestAnimationFrame(scrollPlay);
+    }
+
+    window.requestAnimationFrame(scrollPlay);
+    
+    </script>
+</body>
+</html>
